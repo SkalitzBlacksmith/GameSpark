@@ -425,4 +425,23 @@ label {
     .nav a.actief {
         color: #f97316;
     }
+
+    .zoekbalk,
+    .uitgelicht,
+    .team-lijst {
+        grid-template-columns: 1fr;
+    }
+
+    .afbeelding {
+        min-height: 180px;
+    }
+
+    .uitgelicht-info h2 {
+        font-size: 26px;
+    }
+
+    .knoppen .knop {
+        flex: 1;
+        text-align: center;
+    }
 }
