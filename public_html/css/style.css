@@ -380,3 +380,17 @@ label {
     font-size: 15px;
     cursor: pointer;
 }
+
+@media (max-width: 900px) {
+    .filters {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .kolommen {
+        grid-template-columns: 1fr;
+    }
+
+    .kolom {
+        min-height: auto;
+    }
+}
