@@ -55,3 +55,12 @@ a {
 .nav a.actief {
     border-bottom-color: #f97316;
 }
+
+.footer {
+    background-color: #1f2933;
+    color: #cbd2d9;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
