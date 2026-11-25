@@ -108,3 +108,18 @@ label {
     font-weight: bold;
     font-size: 14px;
 }
+
+.pagina-kop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.zoekbalk {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
