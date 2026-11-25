@@ -200,6 +200,10 @@ label {
     margin-bottom: 16px;
 }
 
+.filters .veld {
+    margin-bottom: 0;
+}
+
 .van-tot {
     display: flex;
     gap: 8px;
