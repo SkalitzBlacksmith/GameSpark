@@ -160,3 +160,35 @@ label {
     color: #f97316;
     font-weight: bold;
 }
+
+.knoppen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 16px 0 40px;
+}
+
+.recent h2 {
+    margin-bottom: 12px;
+}
+
+.recent-lijst {
+    list-style: none;
+    border-top: 1px solid #cbd2d9;
+}
+
+.recent-lijst li {
+    display: grid;
+    grid-template-columns: 40px 1fr 1fr 60px;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #cbd2d9;
+}
+
+.nummer {
+    color: #7b8794;
+}
+
+.rating {
+    font-weight: bold;
+}
