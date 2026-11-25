@@ -482,4 +482,18 @@ label {
         white-space: nowrap;
         padding: 8px 12px;
     }
+
+    .intro {
+        padding: 20px;
+    }
+
+    .intro h1 {
+        font-size: 30px;
+    }
+
+    .foto {
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+    }
 }
