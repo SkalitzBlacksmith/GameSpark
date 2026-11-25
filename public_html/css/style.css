@@ -123,3 +123,40 @@ label {
     gap: 16px;
     margin-bottom: 24px;
 }
+
+.uitgelicht {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #ffffff;
+    border: 1px solid #cbd2d9;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.afbeelding {
+    min-height: 260px;
+    background-color: #e4e7eb;
+    color: #7b8794;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uitgelicht-info {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.uitgelicht-info h2 {
+    font-size: 32px;
+}
+
+.label {
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #f97316;
+    font-weight: bold;
+}
