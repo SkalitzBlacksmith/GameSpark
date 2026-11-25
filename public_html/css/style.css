@@ -192,3 +192,20 @@ label {
 .rating {
     font-weight: bold;
 }
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.van-tot {
+    display: flex;
+    gap: 8px;
+}
+
+.aantal {
+    color: #52606d;
+    margin-bottom: 12px;
+}
