@@ -260,3 +260,31 @@ label {
     border-top: 1px solid #cbd2d9;
     padding-top: 8px;
 }
+
+.formulier fieldset {
+    background-color: #ffffff;
+    border: 1px solid #cbd2d9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.formulier legend {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 8px;
+}
+
+.rij {
+    display: flex;
+    gap: 16px;
+}
+
+.veld {
+    flex: 1;
+    margin-bottom: 16px;
+}
+
+.veld-breed {
+    flex: 2;
+}
