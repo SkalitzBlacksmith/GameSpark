@@ -64,3 +64,28 @@ a {
     justify-content: space-between;
     font-size: 14px;
 }
+
+.knop {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 1px solid #1f2933;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #1f2933;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.knop:hover {
+    background-color: #e4e7eb;
+}
+
+.knop-primair {
+    background-color: #f97316;
+    border-color: #f97316;
+    color: #ffffff;
+}
+
+.knop-primair:hover {
+    background-color: #ea580c;
+}
