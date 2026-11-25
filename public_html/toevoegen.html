@@ -23,6 +23,16 @@
         <form class="formulier" action="#" method="post">
             <fieldset>
                 <legend>Gegevens</legend>
+                <div class="rij">
+                    <div class="veld veld-breed">
+                        <label for="naam">Naam *</label>
+                        <input type="text" id="naam" name="naam" placeholder="Bijv. Hollow Knight" required>
+                    </div>
+                    <div class="veld">
+                        <label for="releasejaar">Releasejaar *</label>
+                        <input type="number" id="releasejaar" name="releasejaar" min="1970" max="2030" placeholder="Bijv. 2017" required>
+                    </div>
+                </div>
             </fieldset>
         </form>
     </main>
