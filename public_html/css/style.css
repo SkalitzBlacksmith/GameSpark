@@ -288,3 +288,40 @@ label {
 .veld-breed {
     flex: 2;
 }
+
+.voorbeeld {
+    width: 80px;
+    height: 80px;
+    background-color: #e4e7eb;
+    color: #7b8794;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.hint {
+    font-size: 14px;
+    color: #52606d;
+    margin-bottom: 16px;
+}
+
+.formulier h3 {
+    margin-bottom: 12px;
+    padding-top: 16px;
+    border-top: 1px solid #cbd2d9;
+}
+
+.teller {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+    color: #52606d;
+}
+
+.formulier-knoppen {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
