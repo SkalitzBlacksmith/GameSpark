@@ -209,3 +209,26 @@ label {
     color: #52606d;
     margin-bottom: 12px;
 }
+
+.kolommen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.kolom {
+    background-color: #ffffff;
+    border: 1px solid #cbd2d9;
+    border-radius: 8px;
+    padding: 16px;
+    min-height: 300px;
+}
+
+.kolom h2 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #cbd2d9;
+}
