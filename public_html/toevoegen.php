@@ -19,7 +19,7 @@ if ($ingediend) {
         $fouten['naam'] = 'Vul een naam van maximaal 150 tekens in.';
     }
     if (!preg_match('/^[1-9][0-9]{3}$/D', $velden['releasejaar'])) {
-        $fouten['releasejaar'] = 'Vul een releasejaar van vier cijfers in.';
+        $fouten['releasejaar'] = 'Vul een jaartal van vier cijfers in, bijvoorbeeld 2021.';
     }
     foreach (['platform' => PLATFORMS, 'status' => STATUSSEN, 'genre' => ['', ...GENRES]] as $veld => $opties) {
         if (!in_array($velden[$veld], $opties, true)) {
@@ -63,7 +63,7 @@ function invoer(string $veld, string $label, string $type, string $waarde, array
         <textarea<?= $attributen ?> rows="3" maxlength="280"><?= escape($waarde) ?></textarea>
         <span class="teller" id="teller"><?= mb_strlen($waarde) ?>/280</span>
         <?php else: ?>
-        <input<?= $attributen ?> type="<?= escape($type) ?>" value="<?= escape($waarde) ?>" <?= in_array($veld, ['releasejaar', 'rating'], true) ? 'inputmode="numeric"' : '' ?>>
+        <input<?= $attributen ?> type="<?= escape($type) ?>" value="<?= escape($waarde) ?>" <?= in_array($veld, ['releasejaar', 'rating'], true) ? 'inputmode="numeric"' : '' ?> <?= $veld === 'releasejaar' ? 'placeholder="Bijv. 2021" maxlength="4"' : '' ?>>
         <?php endif; ?>
         <?php if ($fout): ?><p class="veld-fout" id="<?= escape($veld) ?>-fout"><?= escape($fout) ?></p><?php endif; ?>
     </div>
@@ -91,7 +91,7 @@ require __DIR__ . '/../app/header.php';
             </div>
             <div class="rij">
                 <?php invoer('naam', 'Naam', 'text', $velden['naam'], $fouten); ?>
-                <?php invoer('releasejaar', 'Releasejaar', 'text', $velden['releasejaar'], $fouten); ?>
+                <?php invoer('releasejaar', 'Releasejaar (4 cijfers)', 'text', $velden['releasejaar'], $fouten); ?>
             </div>
             <div class="rij">
                 <?php invoer('platform', 'Platform', 'select', $velden['platform'], $fouten, PLATFORMS); ?>
