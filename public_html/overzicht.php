@@ -38,8 +38,18 @@ require __DIR__ . '/../app/header.php';
         <a href="toevoegen.php" class="knop knop-primair">+ Nieuwe game</a>
     </div>
     <form class="filter-paneel" method="get" action="overzicht.php">
-        <div class="filters">
+        <div class="zoekbalk">
             <label>Zoeken<input type="search" name="zoek" maxlength="100" placeholder="Naam of releasejaar" value="<?= escape($filters['zoek']) ?>"></label>
+            <label>Sortering
+                <select name="sortering">
+                    <?php foreach (['' => 'Naam A–Z', 'naam-za' => 'Naam Z–A', 'jaar-af' => 'Nieuwste eerst', 'jaar-op' => 'Oudste eerst', 'rating-af' => 'Hoogste score', 'rating-op' => 'Laagste score'] as $waarde => $label): ?>
+                    <option value="<?= escape($waarde) ?>" <?= $filters['sortering'] === $waarde ? 'selected' : '' ?>><?= escape($label) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </label>
+        </div>
+        <div class="filters">
+
             <?php foreach ($keuzes as $veld => $opties): ?>
             <label><?= escape(ucfirst($veld)) ?>
                 <select name="<?= escape($veld) ?>">
@@ -62,13 +72,6 @@ require __DIR__ . '/../app/header.php';
             <?php endforeach; ?>
         </div>
         <div class="filter-acties">
-            <label>Sortering
-                <select name="sortering">
-                    <?php foreach (['' => 'Naam A–Z', 'naam-za' => 'Naam Z–A', 'jaar-af' => 'Nieuwste eerst', 'jaar-op' => 'Oudste eerst', 'rating-af' => 'Hoogste score', 'rating-op' => 'Laagste score'] as $waarde => $label): ?>
-                    <option value="<?= escape($waarde) ?>" <?= $filters['sortering'] === $waarde ? 'selected' : '' ?>><?= escape($label) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </label>
             <button class="knop knop-primair">Toepassen</button>
             <a class="knop" href="overzicht.php">Wissen</a>
         </div>
@@ -79,19 +82,32 @@ require __DIR__ . '/../app/header.php';
         <p class="melding"><?= $gefilterd ? 'Geen games gevonden met deze filters.' : 'Er zijn nog geen games toegevoegd.' ?></p>
     <?php else: ?>
         <p class="aantal"><?= count($games) ?> <?= count($games) === 1 ? 'game' : 'games' ?></p>
-        <ul class="game-lijst">
-            <?php foreach ($games as $game): ?>
+        <?php
+        $groepen = [];
+        foreach ($games as $game) {
+            $groepen[$game['status']][] = $game;
+        }
+        ?>
+        <div class="status-kolommen">
+        <?php foreach (['Speelt nu', 'Uitgespeeld', 'Wishlist', 'In bezit'] as $status): ?>
+            <?php if (empty($groepen[$status])) continue; ?>
+            <section class="status-kolom">
+            <h2><?= escape($status) ?> <span><?= count($groepen[$status]) ?></span></h2>
+            <ul class="game-lijst">
+            <?php foreach ($groepen[$status] as $game): ?>
             <li class="game-rij">
                 <a class="game-identiteit" href="game.php?id=<?= (int) $game['id'] ?>">
                     <?php require __DIR__ . '/../app/thumbnail.php'; ?>
                     <span><strong><?= escape($game['title']) ?></strong><small><?= escape($game['platform']) ?> · <?= escape($game['release_year']) ?></small></span>
                 </a>
-                <span class="status"><?= escape($game['status']) ?></span>
                 <span class="rating" aria-label="Beoordeling"><?= $game['rating'] === null ? '—' : escape($game['rating']) . '/5' ?></span>
                 <a class="game-link" href="game.php?id=<?= (int) $game['id'] ?>" aria-label="<?= escape('Bekijk ' . $game['title']) ?>">Bekijk <span aria-hidden="true">↗</span></a>
             </li>
             <?php endforeach; ?>
-        </ul>
+            </ul>
+            </section>
+        <?php endforeach; ?>
+        </div>
     <?php endif; ?>
 </main>
 <?php require __DIR__ . '/../app/footer.php'; ?>

@@ -12,6 +12,7 @@
     <a href="index.php" class="logo">Game<span>Spark</span></a>
     <button class="menu-knop" id="menu-knop" type="button" aria-label="Menu openen" aria-controls="nav" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav" aria-label="Hoofdnavigatie">
+        <a href="index.php" <?= $pagina === 'Home' ? 'aria-current="page"' : '' ?>>Home</a>
         <a href="overzicht.php" <?= $pagina === 'Gameoverzicht' ? 'aria-current="page"' : '' ?>>Overzicht</a>
         <a href="over-ons.php" <?= $pagina === 'Over ons' ? 'aria-current="page"' : '' ?>>Over ons</a>
     </nav>
