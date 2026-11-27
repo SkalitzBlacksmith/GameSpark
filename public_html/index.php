@@ -28,7 +28,7 @@ require __DIR__ . '/../app/header.php';
     </form>
     <?php if (http_response_code() === 503): ?>
         <p class="melding">Het gamearchief is tijdelijk niet beschikbaar.</p>
-    <?php elseif ($actief): $game = $actief; ?>
+    <?php elseif ($actief): $game = $actief; $breedBeeld = true; ?>
         <section class="uitgelicht">
             <?php require __DIR__ . '/../app/thumbnail.php'; ?>
             <div class="uitgelicht-info">

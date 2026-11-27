@@ -31,5 +31,14 @@ for (const afbeelding of document.querySelectorAll('.game-cover img')) {
         if (afbeelding.naturalWidth > 0) afbeelding.classList.add('geladen');
     };
     afbeelding.addEventListener('load', toonAfbeelding, { once: true });
-    if (afbeelding.complete) toonAfbeelding();
+    const toonReserve = () => {
+        if (!afbeelding.dataset.reserve) return;
+        afbeelding.src = afbeelding.dataset.reserve;
+        delete afbeelding.dataset.reserve;
+    };
+    afbeelding.addEventListener('error', toonReserve, { once: true });
+    if (afbeelding.complete) {
+        if (afbeelding.naturalWidth > 0) toonAfbeelding();
+        else toonReserve();
+    }
 }
