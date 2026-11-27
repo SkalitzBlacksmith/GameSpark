@@ -29,11 +29,14 @@ require __DIR__ . '/../app/header.php';
     <?php else: ?>
     <div class="detail-kop">
         <?php require __DIR__ . '/../app/thumbnail.php'; ?>
-        <h1><?= escape($game['title']) ?></h1>
+        <div>
+            <p class="label"><?= escape($game['status']) ?></p>
+            <h1><?= escape($game['title']) ?></h1>
+        </div>
     </div>
     <dl class="game-gegevens">
         <?php foreach (['platform' => 'Platform', 'genre' => 'Genre', 'release_year' => 'Releasejaar', 'status' => 'Status', 'rating' => 'Beoordeling', 'recommended_by' => 'Aangeraden door', 'note' => 'Notitie'] as $veld => $label): ?>
-        <div><dt><?= escape($label) ?></dt><dd><?= escape(($game[$veld] ?? '') === '' ? '—' : $game[$veld]) ?></dd></div>
+        <div><dt><?= escape($label) ?></dt><dd><?= ($game[$veld] ?? '') === '' ? '—' : escape($game[$veld]) . ($veld === 'rating' ? '/5' : '') ?></dd></div>
         <?php endforeach; ?>
     </dl>
     <?php endif; ?>

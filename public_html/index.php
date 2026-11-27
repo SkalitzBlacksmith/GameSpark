@@ -17,7 +17,7 @@ try {
 $pagina = 'Home';
 require __DIR__ . '/../app/header.php';
 ?>
-<main class="container">
+<main class="container archief">
     <div class="pagina-kop">
         <h1>Game-archief</h1>
         <a href="toevoegen.php" class="knop knop-primair">+ Nieuwe game</a>
@@ -41,16 +41,17 @@ require __DIR__ . '/../app/header.php';
     <?php elseif (!$recent): ?>
         <p class="melding">Er zijn nog geen games toegevoegd.</p>
     <?php endif; ?>
-    <a class="knop" href="overzicht.php">Naar overzicht</a>
     <?php if ($recent): ?>
     <section class="recent">
-        <h2>Recent</h2>
+        <div class="sectiekop"><h2>Recent toegevoegd</h2><a class="terug" href="overzicht.php">Alle games →</a></div>
         <ul class="recent-games">
             <?php foreach ($recent as $game): ?>
-            <li><a href="game.php?id=<?= (int) $game['id'] ?>"><strong><?= escape($game['title']) ?></strong><small><?= escape($game['platform']) ?> · <?= escape($game['status']) ?></small></a></li>
+            <li><a href="game.php?id=<?= (int) $game['id'] ?>"><strong><?= escape($game['title']) ?></strong><small><?= escape($game['platform']) ?> · <?= escape($game['status']) ?></small><span class="recent-score"><?= $game['rating'] === null ? '—' : (int) $game['rating'] . '/5' ?></span></a></li>
             <?php endforeach; ?>
         </ul>
     </section>
+    <?php else: ?>
+        <a class="terug" href="overzicht.php">Alle games →</a>
     <?php endif; ?>
 </main>
 <?php require __DIR__ . '/../app/footer.php'; ?>
