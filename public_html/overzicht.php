@@ -104,9 +104,9 @@ require __DIR__ . '/../app/header.php';
                 <a class="game-identiteit" href="game.php?id=<?= (int) $game['id'] ?>">
                     <?php require __DIR__ . '/../app/thumbnail.php'; ?>
                     <span><strong><?= escape($game['title']) ?></strong><small><?= escape($game['platform']) ?> · <?= escape($game['release_year']) ?></small></span>
+                    <span class="rating" aria-label="Beoordeling"><?= $game['rating'] === null ? '—' : escape($game['rating']) . '/5' ?></span>
+                    <span class="game-pijl" aria-hidden="true">→</span>
                 </a>
-                <span class="rating" aria-label="Beoordeling"><?= $game['rating'] === null ? '—' : escape($game['rating']) . '/5' ?></span>
-                <a class="game-link" href="game.php?id=<?= (int) $game['id'] ?>" aria-label="<?= escape('Bekijk ' . $game['title']) ?>">Bekijk <span aria-hidden="true">↗</span></a>
             </li>
             <?php endforeach; ?>
             </ul>
