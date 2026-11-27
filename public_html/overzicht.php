@@ -96,7 +96,7 @@ require __DIR__ . '/../app/header.php';
         <div class="status-kolommen">
         <?php foreach (['Speelt nu', 'Uitgespeeld', 'Wishlist', 'In bezit'] as $status): ?>
             <?php if (empty($groepen[$status])) continue; ?>
-            <section class="status-kolom">
+            <section class="status-kolom" data-status="<?= escape($status) ?>">
             <h2><?= escape($status) ?> <span><?= count($groepen[$status]) ?></span></h2>
             <ul class="game-lijst">
             <?php foreach ($groepen[$status] as $game): ?>
