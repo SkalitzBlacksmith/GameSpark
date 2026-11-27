@@ -70,14 +70,6 @@ function invoer(string $veld, string $label, string $type, string $waarde, array
     <?php
 }
 
-$steamGames = [
-    [1144200, 'Ready or Not', 2023, 'Action'],
-    [1172470, 'Apex Legends', 2019, 'Action'],
-    [1222670, 'The Sims 4', 2014, 'Strategy'],
-    [892970, 'Valheim', 2021, 'Adventure'],
-    [1245620, 'Elden Ring', 2022, 'RPG'],
-];
-
 $pagina = 'Nieuwe game toevoegen';
 require __DIR__ . '/../app/header.php';
 ?>
@@ -90,13 +82,12 @@ require __DIR__ . '/../app/header.php';
         <fieldset>
             <legend>Gegevens</legend>
             <div class="veld steam-keuze">
-                <label for="steam-game">Kies een Steam-game (optioneel)</label>
-                <select id="steam-game">
-                    <option value="">Zelf invullen</option>
-                    <?php foreach ($steamGames as [$id, $naam, $jaar, $genre]): ?>
-                    <option value="<?= $id ?>" data-jaar="<?= $jaar ?>" data-genre="<?= escape($genre) ?>"><?= escape($naam) ?></option>
-                    <?php endforeach; ?>
-                </select>
+                <div class="zoekbalk">
+                    <label>Zoek een Steam-game<input id="steam-zoek" type="search" minlength="2" maxlength="80"></label>
+                    <button class="knop" id="steam-zoeken" type="button">Zoeken op Steam</button>
+                </div>
+                <label id="steam-resultaten" hidden>Steam-resultaten<select id="steam-game"></select></label>
+                <p id="steam-melding" role="status"></p>
             </div>
             <div class="rij">
                 <?php invoer('naam', 'Naam', 'text', $velden['naam'], $fouten); ?>

@@ -43,14 +43,54 @@ for (const afbeelding of document.querySelectorAll('.game-cover img')) {
     }
 }
 
-const steamGame = document.getElementById('steam-game');
-if (steamGame) {
-    steamGame.addEventListener('change', () => {
-        const keuze = steamGame.selectedOptions[0];
+const steamZoek = document.getElementById('steam-zoek');
+
+if (steamZoek) {
+    const knop = document.getElementById('steam-zoeken');
+    const resultaten = document.getElementById('steam-resultaten');
+    const keuze = document.getElementById('steam-game');
+    const melding = document.getElementById('steam-melding');
+
+    async function zoekSteam() {
+        const term = steamZoek.value.trim();
+        resultaten.hidden = true;
+        keuze.replaceChildren();
+        if (term.length < 2) {
+            melding.textContent = 'Typ minstens twee tekens.';
+            return;
+        }
+
+        knop.disabled = true;
+        melding.textContent = 'Zoeken…';
+        try {
+            const antwoord = await fetch('steam-zoeken.php?q=' + encodeURIComponent(term));
+            if (!antwoord.ok) throw new Error();
+            const games = await antwoord.json();
+            if (games.length === 0) {
+                melding.textContent = 'Geen resultaten op Steam.';
+                return;
+            }
+
+            keuze.add(new Option('Kies een game', ''));
+            for (const game of games) keuze.add(new Option(game.naam, game.afbeelding));
+            resultaten.hidden = false;
+            melding.textContent = '';
+        } catch {
+            melding.textContent = 'Steam is tijdelijk niet bereikbaar.';
+        } finally {
+            knop.disabled = false;
+        }
+    }
+
+    knop.addEventListener('click', zoekSteam);
+    steamZoek.addEventListener('keydown', event => {
+        if (event.key !== 'Enter') return;
+        event.preventDefault();
+        if (!knop.disabled) zoekSteam();
+    });
+    keuze.addEventListener('change', () => {
         if (!keuze.value) return;
-        document.getElementById('naam').value = keuze.textContent;
-        document.getElementById('releasejaar').value = keuze.dataset.jaar;
-        document.getElementById('genre').value = keuze.dataset.genre;
-        document.getElementById('afbeelding_url').value = 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/' + keuze.value + '/library_600x900.jpg';
+        document.getElementById('naam').value = keuze.selectedOptions[0].textContent;
+        document.getElementById('afbeelding_url').value = keuze.value;
     });
 }

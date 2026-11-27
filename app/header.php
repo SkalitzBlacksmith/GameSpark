@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Rajdhani:wght@600;700&amp;display=swap">
     <link rel="stylesheet" href="css/style.css?v=9">
-    <script defer src="js/script.js?v=4"></script>
+    <script defer src="js/script.js?v=5"></script>
 </head>
 <body>
 <header class="header">
