@@ -25,3 +25,11 @@ if (notitie && teller) {
     notitie.addEventListener('input', tel);
     tel();
 }
+
+for (const afbeelding of document.querySelectorAll('.game-cover img')) {
+    const toonAfbeelding = () => {
+        if (afbeelding.naturalWidth > 0) afbeelding.classList.add('geladen');
+    };
+    afbeelding.addEventListener('load', toonAfbeelding, { once: true });
+    if (afbeelding.complete) toonAfbeelding();
+}
