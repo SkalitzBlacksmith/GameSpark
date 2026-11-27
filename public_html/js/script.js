@@ -42,3 +42,15 @@ for (const afbeelding of document.querySelectorAll('.game-cover img')) {
         else toonReserve();
     }
 }
+
+const steamGame = document.getElementById('steam-game');
+if (steamGame) {
+    steamGame.addEventListener('change', () => {
+        const keuze = steamGame.selectedOptions[0];
+        if (!keuze.value) return;
+        document.getElementById('naam').value = keuze.textContent;
+        document.getElementById('releasejaar').value = keuze.dataset.jaar;
+        document.getElementById('genre').value = keuze.dataset.genre;
+        document.getElementById('afbeelding_url').value = 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/' + keuze.value + '/library_600x900.jpg';
+    });
+}

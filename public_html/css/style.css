@@ -110,6 +110,7 @@ textarea { resize: vertical; }
 .team-kaart { display: flex; align-items: center; gap: 16px; padding: 16px; border: 1px solid var(--rand); background: var(--vlak); border-radius: 8px; }
 .foto { display: grid; place-items: center; width: 58px; height: 58px; background: #232942; color: var(--accent); font-size: 1.4rem; }
 .formulier { max-width: 800px; }
+.steam-keuze { margin-bottom: 14px; }
 .formulier fieldset { margin: 0 0 18px; min-width: 0; padding: 16px; border: 1px solid var(--rand); border-radius: 8px; background: var(--vlak); }
 .formulier legend { padding: 0 8px; font-weight: 800; }
 .formulier h3, .formulier .veld + .veld { margin-top: 12px; }
