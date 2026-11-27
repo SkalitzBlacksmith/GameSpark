@@ -23,7 +23,7 @@ small, .hint, .teller, .aantal { color: var(--gedempt); }
 .header, .footer { padding: 16px max(20px, calc((100vw - 1160px) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--vlak); }
 .header { border-bottom: 1px solid var(--rand); }
 .footer { background: var(--achtergrond); border-top: 1px solid var(--rand); color: var(--gedempt); font-size: .85rem; }
-.logo { font-size: 1.4rem; font-weight: 850; letter-spacing: -.04em; }
+.logo { font-size: 1.65rem; font-weight: 700; letter-spacing: -.045em; }
 .logo span, .nav a[aria-current], .terug { color: var(--link); }
 .nav { display: flex; gap: 24px; }
 .nav a { padding: 10px 2px; border-bottom: 2px solid transparent; }
@@ -86,22 +86,25 @@ textarea { resize: vertical; }
 .game-cover img.geladen { opacity: 1; }
 .rating { font: 650 .85rem ui-monospace, monospace; color: var(--tekst); }
 .melding { margin: 20px 0; border-left: 2px solid var(--accent); background: var(--vlak); padding: 14px; }
-.uitgelicht { display: grid; grid-template-columns: 1.15fr 1fr; border: 1px solid var(--rand); margin: 22px 0 14px; background: var(--vlak); border-radius: 8px; overflow: hidden; box-shadow: 0 18px 36px #080a1360; }
-.uitgelicht .game-cover { width: 100%; height: auto; aspect-ratio: 460 / 215; align-self: center; border-right: 1px solid var(--rand); }
-.uitgelicht .game-cover { background: #141827; }
+.uitgelicht { display: grid; grid-template-columns: 1.15fr 1fr; align-items: stretch; border-block: 1px solid var(--rand); padding-block: 14px; margin: 24px 0 14px; }
+.uitgelicht .game-cover { width: 100%; height: auto; aspect-ratio: 460 / 215; align-self: center; }
+.uitgelicht .game-cover { background: #141827; border-radius: 4px; }
 .uitgelicht .fallback { font: 700 clamp(2rem, 7vw, 4.5rem)/1 Rajdhani, sans-serif; letter-spacing: .12em; color: var(--link); }
-.uitgelicht-info { padding: clamp(16px, 4vw, 44px); align-self: center; overflow-wrap: anywhere; }
+.uitgelicht-info { padding: clamp(18px, 4vw, 48px); align-self: center; overflow-wrap: anywhere; }
+.uitgelicht-info .label { display: flex; align-items: center; gap: 10px; }
+.uitgelicht-info .label::before { content: ""; width: 22px; height: 2px; background: currentColor; }
 
-.uitgelicht-info h2 { font-size: clamp(36px, 5vw, 68px); line-height: .98; margin: 10px 0 14px; }
+.uitgelicht-info h2 { font-size: clamp(36px, 6vw, 76px); line-height: .94; letter-spacing: -.035em; margin: 12px 0 16px; text-wrap: balance; }
 .uitgelicht-info .knop { margin-top: 14px; }
 .label { color: var(--link); font-size: .85rem; font-weight: 650; }
 .recent, .team { margin: 28px 0; }
 .recent-games { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; margin-top: 10px; }
 .recent-games li { border-top: 1px solid var(--rand); }
 .sectiekop { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 18px; }
+.sectiekop h2 { letter-spacing: -.02em; }
 .recent-games a { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 13px 0; }
 .recent-games small { grid-row: 2; }
-.recent-score { grid-row: 1 / span 2; grid-column: 2; align-self: center; color: var(--gedempt); font-variant-numeric: tabular-nums; }
+.recent-score { grid-row: 1 / span 2; grid-column: 2; align-self: center; color: var(--gedempt); font: 600 .875rem ui-monospace, monospace; }
 .intro p { max-width: 65ch; margin-top: 14px; }
 .team-lijst { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
 .team-kaart { display: flex; align-items: center; gap: 16px; padding: 16px; border: 1px solid var(--rand); background: var(--vlak); border-radius: 8px; }
@@ -142,7 +145,7 @@ textarea { resize: vertical; }
     .zoekbalk { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
     .team-lijst, .recent-games, .rij { grid-template-columns: 1fr; }
     .uitgelicht { grid-template-columns: 1fr; }
-    .uitgelicht .game-cover { border-right: 0; border-bottom: 1px solid var(--rand); }
+    .uitgelicht-info { padding: 22px 0 8px; }
     .filter-paneel { padding: 12px; }
     .status-kolommen { grid-template-columns: 1fr; gap: 24px; }
     .nav a[aria-current] { border-bottom-color: transparent; border-left: 2px solid var(--accent); padding-left: 10px; }
