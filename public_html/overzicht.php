@@ -21,12 +21,15 @@ foreach (['van', 'tot'] as $veld) {
 
 $games = [];
 $databaseFout = false;
-try {
-    $games = filterGames(database(), $filters);
-} catch (PDOException $fout) {
-    error_log($fout->getMessage());
-    http_response_code(503);
-    $databaseFout = true;
+$scoreFout = $filters['van'] !== '' && $filters['tot'] !== '' && (int) $filters['van'] > (int) $filters['tot'];
+if (!$scoreFout) {
+    try {
+        $games = filterGames(database(), $filters);
+    } catch (PDOException $fout) {
+        error_log($fout->getMessage());
+        http_response_code(503);
+        $databaseFout = true;
+    }
 }
 $gefilterd = (bool) array_filter(array_diff_key($filters, ['sortering' => true]));
 $pagina = 'Gameoverzicht';
@@ -62,7 +65,7 @@ require __DIR__ . '/../app/header.php';
             <?php endforeach; ?>
             <?php foreach (['van' => 'Score vanaf', 'tot' => 'Score tot en met'] as $veld => $label): ?>
             <label><?= escape($label) ?>
-                <select name="<?= escape($veld) ?>">
+                <select name="<?= escape($veld) ?>" <?= $scoreFout ? 'aria-invalid="true" aria-describedby="score-fout"' : '' ?>>
                     <option value="">Alle</option>
                     <?php for ($score = 1; $score <= 5; $score++): ?>
                     <option <?= $filters[$veld] === (string) $score ? 'selected' : '' ?>><?= $score ?></option>
@@ -78,6 +81,8 @@ require __DIR__ . '/../app/header.php';
     </form>
     <?php if ($databaseFout): ?>
         <p class="melding">Het gameoverzicht is tijdelijk niet beschikbaar.</p>
+    <?php elseif ($scoreFout): ?>
+        <p class="melding" id="score-fout" role="alert">De minimumscore mag niet hoger zijn dan de maximumscore.</p>
     <?php elseif (!$games): ?>
         <p class="melding"><?= $gefilterd ? 'Geen games gevonden met deze filters.' : 'Er zijn nog geen games toegevoegd.' ?></p>
     <?php else: ?>
